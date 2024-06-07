@@ -7,4 +7,6 @@ public interface PaymentService {
 
     String createPaymentLink(long userId, long orderId) throws InvalidUserException, InvalidOrderException, Exception;
 
+    String handlePaymentCallback(String paymentId, String paymentLinkId, String paymentLinkReferenceId, String paymentLinkStatus, String signature) throws Exception;
+
 }

@@ -41,7 +41,7 @@ public class RazorpayPGAdapter implements PaymentGatewayAdapter {
         paymentLinkRequest.put("notify",notify);
 
         paymentLinkRequest.put("reminder_enable",true);
-        paymentLinkRequest.put("callback_url","https://scaler.com");
+        paymentLinkRequest.put("callback_url","http://localhost:8083/payments/callback");
         paymentLinkRequest.put("callback_method","get");
         PaymentLink paymentLink = razorpayClient.paymentLink.create(paymentLinkRequest);
         System.out.println(paymentLink);
