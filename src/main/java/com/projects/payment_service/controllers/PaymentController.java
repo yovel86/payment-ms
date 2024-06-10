@@ -37,12 +37,15 @@ public class PaymentController {
             @RequestParam(value = "razorpay_payment_link_id") String paymentLinkId,
             @RequestParam(value = "razorpay_payment_link_reference_id") String paymentLinkReferenceId,
             @RequestParam(value = "razorpay_payment_link_status") String paymentLinkStatus,
-            @RequestParam(value = "razorpay_signature") String signature) {
+            @RequestParam(value = "razorpay_signature") String signature,
+            @RequestParam(value = "orderId") long orderId,
+            @RequestParam(value = "userId") long userId
+    ) {
         if(paymentId == null || paymentLinkId == null || paymentLinkReferenceId == null || paymentLinkStatus == null || signature == null) {
             return new ResponseEntity<>("FAILURE", HttpStatus.BAD_REQUEST);
         }
         try {
-            String status = this.paymentService.handlePaymentCallback(paymentId, paymentLinkId, paymentLinkReferenceId, paymentLinkStatus, signature);
+            String status = this.paymentService.handlePaymentCallback(paymentId, paymentLinkId, paymentLinkReferenceId, paymentLinkStatus, signature, orderId, userId);
             System.out.println(status);
             return new ResponseEntity<>(status, HttpStatus.OK);
         } catch (Exception e) {

@@ -1,9 +1,6 @@
 package com.projects.payment_service.models;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import lombok.Data;
 
 import java.util.Date;
@@ -17,6 +14,6 @@ public class Payment {
     private long orderId;
     private double amount;
     private Date paymentDate;
-    private String transactionId;
+    @Enumerated(value = EnumType.STRING)
     private PaymentStatus paymentStatus;
 }
